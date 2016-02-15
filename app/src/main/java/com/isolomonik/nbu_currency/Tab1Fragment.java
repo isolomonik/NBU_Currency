@@ -1,11 +1,13 @@
 package com.isolomonik.nbu_currency;
 
 
-import android.app.LoaderManager;
+//import android.app.LoaderManager;
 import android.content.Context;
-import android.content.Loader;
 import android.os.Bundle;
-import android.app.Fragment;
+//import android.app.Fragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,6 +40,7 @@ public class Tab1Fragment extends Fragment implements LoaderManager.LoaderCallba
     }
 
     // override for Loader
+
     @Override
     public Loader onCreateLoader(int id, Bundle args) {
         return null;
@@ -52,6 +55,8 @@ public class Tab1Fragment extends Fragment implements LoaderManager.LoaderCallba
     public void onLoaderReset(Loader loader) {
 
     }
+
+
 //---------------
 
 

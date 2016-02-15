@@ -1,6 +1,6 @@
 package com.isolomonik.nbu_currency;
 
-import android.app.FragmentManager;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity implements Tab1Fragment.Call
         setContentView(R.layout.activity_main);
 
         Tab1Fragment tab1=new Tab1Fragment();
-        FragmentManager fm=getFragmentManager();
+        FragmentManager fm=getSupportFragmentManager();
         fm.beginTransaction().add(R.id.tab1Cont, tab1).commit();
     }
 

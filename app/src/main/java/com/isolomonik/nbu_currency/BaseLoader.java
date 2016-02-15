@@ -19,24 +19,24 @@ public abstract class BaseLoader extends AsyncTaskLoader<Response> {
         forceLoad();
     }
 
-    @Override
-    public Response loadInBackground() {
-        try {
-            Response response = apiCall();
+//    @Override
+//    public Response loadInBackground() {
+//        try {
+//            Response response = apiCall();
 //            if (response.getRequestResult() == RequestResult.SUCCESS) {
 //                response.save(getContext());
 //                onSuccess();
 //            } else {
 //                onError();
 //            }
-            return response;
-        } catch (IOException e) {
-            onError();
-
-        }
-
-        return null;
-    }
+//            return response;
+//        } catch (IOException e) {
+//            onError();
+//
+//        }
+//
+//        return null;
+//    }
 
     protected void onSuccess() {
     }

@@ -11,8 +11,6 @@ public class APIFactory {
 
     private static final OkHttpClient CLIENT = new OkHttpClient();
 
-
-
     @NonNull
     public static NBURestInterface getNBUExchange() {
         return getRetrofit().create(NBURestInterface.class);

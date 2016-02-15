@@ -1,14 +1,15 @@
 package com.isolomonik.nbu_currency;
 
 import android.content.Context;
+import android.support.v4.content.AsyncTaskLoader;
 
 import java.io.IOException;
 
 import retrofit2.*;
-import retrofit2.Response;
+//import retrofit2.Response;
 
 
-public class NBUAPILoader extends BaseLoader {
+public class NBUAPILoader extends AsyncTaskLoader {
 
 
     public NBUAPILoader(Context context) {
@@ -16,10 +17,10 @@ public class NBUAPILoader extends BaseLoader {
     }
 
     @Override
-    protected Response apiCall() throws IOException {
-        //todo RESTAPI
-
+    public Object loadInBackground() {
 
         return null;
     }
+
+
 }
