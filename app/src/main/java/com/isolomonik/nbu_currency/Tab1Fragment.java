@@ -10,13 +10,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
 
-public class Tab1Fragment extends Fragment implements LoaderManager.LoaderCallbacks {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+
+public class Tab1Fragment extends Fragment implements LoaderManager.LoaderCallbacks , Callback<List<NBUExchangeModel>> {
 
 
     static String NBU_URL="http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange";
 
 private CallbackTab1 callbackTab1;
+
+
+
     //Container Activity must implement this interface
     public interface CallbackTab1{
 public void dosomthing(Object o);
@@ -26,7 +35,7 @@ public void dosomthing(Object o);
     public Tab1Fragment() {
         // Required empty public constructor
     }
-
+ // override for Loader
     @Override
     public Loader onCreateLoader(int id, Bundle args) {
         return null;
@@ -41,8 +50,22 @@ public void dosomthing(Object o);
     public void onLoaderReset(Loader loader) {
 
     }
+//---------------
 
 
+// override for retrofit
+
+    @Override
+    public void onResponse(Call<List<NBUExchangeModel>> call, Response<List<NBUExchangeModel>> response) {
+
+    }
+
+    @Override
+    public void onFailure(Call<List<NBUExchangeModel>> call, Throwable t) {
+
+    }
+
+    //----------
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
