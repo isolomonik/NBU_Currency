@@ -11,7 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class Tab1 extends Fragment implements LoaderManager.LoaderCallbacks {
+public class Tab1Fragment extends Fragment implements LoaderManager.LoaderCallbacks {
+
+
+    static String NBU_URL="http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange";
 
 private CallbackTab1 callbackTab1;
     //Container Activity must implement this interface
@@ -20,7 +23,7 @@ public void dosomthing(Object o);
     }
 
 
-    public Tab1() {
+    public Tab1Fragment() {
         // Required empty public constructor
     }
 

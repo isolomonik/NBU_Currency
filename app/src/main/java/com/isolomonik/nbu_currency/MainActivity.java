@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-public class MainActivity extends AppCompatActivity implements Tab1.CallbackTab1 {
+public class MainActivity extends AppCompatActivity implements Tab1Fragment.CallbackTab1 {
     @Override
     public void dosomthing(Object o) {
         Log.v("my_log", o.toString());
@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity implements Tab1.CallbackTab1
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Tab1 tab1=new Tab1();
+        Tab1Fragment tab1=new Tab1Fragment();
         FragmentManager fm=getFragmentManager();
         fm.beginTransaction().add(R.id.tab1Cont, tab1).commit();
     }
