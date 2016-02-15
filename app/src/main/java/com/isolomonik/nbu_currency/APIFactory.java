@@ -21,7 +21,7 @@ public class APIFactory {
     @NonNull
     private static Retrofit getRetrofit() {
         return new Retrofit.Builder()
-                //.baseUrl(BuildConfig.API_ENDPOINT)
+                .baseUrl("http://bank.gov.ua/NBUStatService/v1/statdirectory/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(CLIENT)
                 .build();

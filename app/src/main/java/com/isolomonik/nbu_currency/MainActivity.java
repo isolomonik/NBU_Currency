@@ -7,7 +7,7 @@ import android.util.Log;
 
 public class MainActivity extends AppCompatActivity implements Tab1Fragment.CallbackTab1 {
     @Override
-    public void dosomthing(Object o) {
+    public void doSomething(Object o) {
         Log.v("my_log", o.toString());
     }
 

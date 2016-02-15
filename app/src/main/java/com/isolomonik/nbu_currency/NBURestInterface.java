@@ -11,7 +11,7 @@ import retrofit2.http.Query;
  */
 public interface NBURestInterface {
 
-    @GET("http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange")
+    @GET("exchange")
     Call<List<NBUExchangeModel>> nbuExchange();
 
      @GET("http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange")

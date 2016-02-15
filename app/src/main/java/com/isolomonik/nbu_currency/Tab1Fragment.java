@@ -6,9 +6,11 @@ import android.content.Context;
 import android.content.Loader;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import java.util.List;
 
@@ -17,25 +19,25 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class Tab1Fragment extends Fragment implements LoaderManager.LoaderCallbacks , Callback<List<NBUExchangeModel>> {
+public class Tab1Fragment extends Fragment implements LoaderManager.LoaderCallbacks, Callback<List<NBUExchangeModel>> {
 
+    Button btnGetAPI;
+    static String NBU_URL = "http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange";
 
-    static String NBU_URL="http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange";
-
-private CallbackTab1 callbackTab1;
-
+    private CallbackTab1 callbackTab1;
 
 
     //Container Activity must implement this interface
-    public interface CallbackTab1{
-public void dosomthing(Object o);
+    public interface CallbackTab1 {
+        public void doSomething(Object o);
     }
 
 
     public Tab1Fragment() {
         // Required empty public constructor
     }
- // override for Loader
+
+    // override for Loader
     @Override
     public Loader onCreateLoader(int id, Bundle args) {
         return null;
@@ -57,12 +59,16 @@ public void dosomthing(Object o);
 
     @Override
     public void onResponse(Call<List<NBUExchangeModel>> call, Response<List<NBUExchangeModel>> response) {
-
+        if (response.isSuccess()) {
+            List<NBUExchangeModel> nbuExchange = response.body();
+            //do something here
+            Log.v("my_log", nbuExchange.toString());
+        }
     }
 
     @Override
     public void onFailure(Call<List<NBUExchangeModel>> call, Throwable t) {
-
+        Log.v("my_log", t.toString());
     }
 
     //----------
@@ -70,8 +76,20 @@ public void dosomthing(Object o);
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tab1, container, false);
+
+        View v = inflater.inflate(R.layout.fragment_tab1, container, false);
+        btnGetAPI = (Button) v.findViewById(R.id.BtnGet);
+        btnGetAPI.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NBURestInterface rest = APIFactory.getNBUExchange();
+                Call<List<NBUExchangeModel>> call = rest.nbuExchange();
+                call.enqueue(Tab1Fragment.this);
+            }
+        });
+
+
+        return v;
     }
 
     @Override
