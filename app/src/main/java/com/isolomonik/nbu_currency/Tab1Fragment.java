@@ -62,13 +62,13 @@ public class Tab1Fragment extends Fragment implements LoaderManager.LoaderCallba
         if (response.isSuccess()) {
             List<NBUExchangeModel> nbuExchange = response.body();
             //do something here
-            Log.v("my_log", nbuExchange.toString());
+            Log.v("my_log", "получено");
         }
     }
 
     @Override
     public void onFailure(Call<List<NBUExchangeModel>> call, Throwable t) {
-        Log.v("my_log", t.toString());
+        Log.v("my_log", "не получено");
     }
 
     //----------
