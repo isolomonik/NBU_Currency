@@ -26,7 +26,7 @@ public class Tab1Fragment extends Fragment implements LoaderManager.LoaderCallba
 {
 
     Button btnGetAPI;
-    static String NBU_URL = "http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange";
+
 
     private CallbackTab1 callbackTab1;
 
