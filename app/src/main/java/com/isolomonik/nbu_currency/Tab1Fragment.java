@@ -21,7 +21,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class Tab1Fragment extends Fragment implements LoaderManager.LoaderCallbacks, Callback<List<NBUExchangeModel>> {
+public class Tab1Fragment extends Fragment implements LoaderManager.LoaderCallbacks
+   //     , Callback<List<NBUExchangeModel>>
+{
 
     Button btnGetAPI;
     static String NBU_URL = "http://bank.gov.ua/NBUStatService/v1/statdirectory/exchange";
@@ -43,12 +45,13 @@ public class Tab1Fragment extends Fragment implements LoaderManager.LoaderCallba
 
     @Override
     public Loader onCreateLoader(int id, Bundle args) {
-        return null;
+        NBUAPILoader nbuapiLoader=new NBUAPILoader(Tab1Fragment.this.getContext(), args);
+        return nbuapiLoader;
     }
 
     @Override
     public void onLoadFinished(Loader loader, Object data) {
-
+Log.v("my_log", data.toString());
     }
 
     @Override
@@ -62,19 +65,19 @@ public class Tab1Fragment extends Fragment implements LoaderManager.LoaderCallba
 
 // override for retrofit
 
-    @Override
-    public void onResponse(Call<List<NBUExchangeModel>> call, Response<List<NBUExchangeModel>> response) {
-        if (response.isSuccess()) {
-            List<NBUExchangeModel> nbuExchange = response.body();
-            //do something here
-            Log.v("my_log", "получено");
-        }
-    }
-
-    @Override
-    public void onFailure(Call<List<NBUExchangeModel>> call, Throwable t) {
-        Log.v("my_log", "не получено");
-    }
+//    @Override
+//    public void onResponse(Call<List<NBUExchangeModel>> call, Response<List<NBUExchangeModel>> response) {
+//        if (response.isSuccess()) {
+//            List<NBUExchangeModel> nbuExchange = response.body();
+//            //do something here
+//            Log.v("my_log", "получено");
+//        }
+//    }
+//
+//    @Override
+//    public void onFailure(Call<List<NBUExchangeModel>> call, Throwable t) {
+//        Log.v("my_log", "не получено");
+//    }
 
     //----------
 
@@ -87,9 +90,10 @@ public class Tab1Fragment extends Fragment implements LoaderManager.LoaderCallba
         btnGetAPI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NBURestInterface rest = APIFactory.getNBUExchange();
-                Call<List<NBUExchangeModel>> call = rest.nbuExchange();
-                call.enqueue(Tab1Fragment.this);
+//                NBURestInterface rest = APIFactory.getNBUExchange();
+//                Call<List<NBUExchangeModel>> call = rest.nbuExchange();
+//                call.enqueue(Tab1Fragment.this);
+                getLoaderManager().restartLoader(Constans.LOADER_NBU_ID, null, Tab1Fragment.this );
             }
         });
 
